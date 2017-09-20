@@ -13,11 +13,11 @@
 <body>
 
 	<div>
-		<h1>Current Word:<span id="currentWordID"></span></h1>
-		<h1>Guesses:<span id="guessesID"></span></h1>
-		<h1>Remaining:<span id="remainingID"></span></h1>
-		<h1>Wins:<span id="winsID"></span></h1>
-		<h1>Losses:<span id="lossesID"></span></h1>
+		<h1>Current Word:&nbsp&nbsp<span id="currentWordID"></span></h1>
+		<h1>Guesses:&nbsp&nbsp<span id="guessesID"></span></h1>
+		<h1>Remaining:&nbsp&nbsp<span id="remainingID"></span></h1>
+		<h1>Wins:&nbsp&nbsp<span id="winsID"></span></h1>
+		<h1>Losses:&nbsp&nbsp<span id="lossesID"></span></h1>
 	</div>
 
 
@@ -31,7 +31,7 @@
 		var guesses = '';
 		var remaining = 6;
 		var currentWord = '';
-		var currentSolved = '';
+		var currentSolved = [];
 
 		initialize();
 
@@ -39,24 +39,39 @@
 
 		document.onkeyup = function(event) {
 			var currentGuess = event.key;
-			//console.log(currentGuess);
+			//sets currentGuess to input letter
 
 			if( alphabet.indexOf(currentGuess.toLowerCase()) > -1 && guesses.indexOf(currentGuess.toLowerCase()) === -1){
-				//verifies currentGuess is alphabet character and not already guessed
+			//verifies currentGuess is alphabet character and not already guessed
 
 				var checkGuess = currentWord.indexOf(currentGuess.toLowerCase());
-				//console.log(checkGuess);
+				//locates currentGuess within currentWord
 
 				if(checkGuess > -1){
-					//succesful check operation
+					//successful check
 
-					//check for victory
+					currentSolved[currentWord.indexOf(currentGuess)] = currentGuess;
+					//adds current guess to currentSolved array
+					
+					//convert currentSolved array to checkSolvedString string
+					var checkSolvedString = '';
+					for( i = 0; i < currentWord.length; i++ ){
+						checkSolvedString = checkSolvedString + currentSolved[i];
+					}
 
-					//add letter to correct location
-					guesses = guesses +' ' +currentGuess;
-					printScreen();
+					
+					//check for win
+					if(checkSolvedString === currentWord){
+						wins ++;
+						initialize();
+					}
 
-				} else if (remaining === 0) {
+					else{
+						guesses = guesses +' ' +currentGuess;
+						printScreen();
+					}
+
+				} else if (remaining === 1) {
 					losses ++;
 					initialize();
 				}
@@ -80,14 +95,25 @@
 			guesses = '';
 			remaining = 6;
 
+			for( i=0; i < currentWord.length; i++){
+				currentSolved[i] = '_';
+			}
+
+			console.log(currentSolved);
 			console.log(currentWord);
 			
 			printScreen();
 		}
 
 		function printScreen(){
-			// currentWord print routine goes here
-			document.getElementById('currentWordID').innerHTML = currentSolved;
+		
+			//converts currentSolved array to String for Display
+			var currentSolvedString = '';
+			for( i = 0; i < currentWord.length; i++ ){
+				currentSolvedString = currentSolvedString + currentSolved[i] + ' ';
+			}
+
+			document.getElementById('currentWordID').innerHTML = currentSolvedString;
 			document.getElementById('guessesID').innerHTML = guesses;
 			document.getElementById('remainingID').innerHTML = remaining;
 			document.getElementById('winsID').innerHTML = wins;
