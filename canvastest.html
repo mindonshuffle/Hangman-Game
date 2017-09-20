@@ -1,0 +1,89 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+		<title>Test Page</title>
+	</head>
+
+
+	<body>
+
+		<img class="element-animation" src="assets/tempwheel.svg">
+
+	</body>
+
+
+ <style>
+ 	.element-animation{
+  animation: test ease-in-out 4s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: test ease-in-out 4s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+  -moz-animation: test ease-in-out 4s;
+  -moz-animation-iteration-count: 1;
+  -moz-transform-origin: 50% 50%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: test ease-in-out 4s;
+  -o-animation-iteration-count: 1;
+  -o-transform-origin: 50% 50%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: test ease-in-out 4s;
+  -ms-animation-iteration-count: 1;
+  -ms-transform-origin: 50% 50%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes test{
+  0% {
+    transform:  rotate(0deg) ;
+  }
+  100% {
+    transform:  rotate(51deg) ;
+  }
+}
+
+@-moz-keyframes test{
+  0% {
+    -moz-transform:  rotate(0deg) ;
+  }
+  100% {
+    -moz-transform:  rotate(51deg) ;
+  }
+}
+
+@-webkit-keyframes test {
+  0% {
+    -webkit-transform:  rotate(0deg) ;
+  }
+  100% {
+    -webkit-transform:  rotate(51deg) ;
+  }
+}
+
+@-o-keyframes test {
+  0% {
+    -o-transform:  rotate(0deg) ;
+  }
+  100% {
+    -o-transform:  rotate(51deg) ;
+  }
+}
+
+@-ms-keyframes test {
+  0% {
+    -ms-transform:  rotate(0deg) ;
+  }
+  100% {
+    -ms-transform:  rotate(51deg) ;
+  }
+}
+</style>
+
+
+</html>
+

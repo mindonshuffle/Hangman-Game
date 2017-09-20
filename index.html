@@ -24,7 +24,7 @@
 	<!-- Begin Javascript code -->
 
 	<script>
-		var wordList = ['dog', 'cat', 'dolphin', 'horse', 'zebra', 'donut'];
+		var wordList = ['doubleword']
 		var alphabet = 'abcdefghijklmnopqrstuvwxyz';
 		var wins = 0;
 		var losses = 0;
@@ -49,6 +49,12 @@
 
 				if(checkGuess > -1){
 					//successful check
+
+					for( i = 0; i < currentWord.length; i++){
+						if(currentWord[i]===currentGuess.toLowerCase){
+							currentSolved[i]=currentWord[i];
+						}
+					}
 
 					currentSolved[currentWord.indexOf(currentGuess)] = currentGuess;
 					//adds current guess to currentSolved array
