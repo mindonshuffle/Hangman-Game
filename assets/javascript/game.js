@@ -1,9 +1,10 @@
-//----Variable Defitions----
+//----Variable Declarations----
 
 var wordList = ['mocha', 'cafe', 'filter', 'thermos', 'espresso', 'latte', 
-				'frappe', 'barista', 'roaster', 'beans', 'coffee', 'caffeine', 
-				'grinds', 'black', 'press', 'drip', 'cuppa'];
-				
+'frappe', 'barista', 'roaster', 'beans', 'coffee', 'caffeine', 
+'grinds', 'black', 'press', 'drip', 'cuppa', 'crema', 'pourover',
+'siphon', 'steaming', 'iced', 'cortado'];
+
 var alphabet = 'abcdefghijklmnopqrstuvwxyz';
 var wins = 0;
 var losses = 0;
@@ -12,7 +13,7 @@ var remaining = 6;
 var currentWord = '';
 var currentSolved = [];
 
-//----function definitions----
+//----Function Declarations----
 
 function initialize(){
 	// randomly assigns a word from wordList to currentWord and resets other counters
@@ -36,7 +37,7 @@ function printScreen(){
 	//converts currentSolved array to String for Display
 	var currentSolvedString = '';
 	for( i = 0; i < currentWord.length; i++ ){
-		currentSolvedString = currentSolvedString + currentSolved[i] + ' ';
+		currentSolvedString = currentSolvedString + currentSolved[i].toUpperCase() + '&nbsp';
 	}
 
 	console.log(currentSolved);
@@ -57,7 +58,7 @@ initialize();
 
 	//When key pressed, begin checking the values
 
-document.onkeyup = function(event) {
+	document.onkeyup = function(event) {
 	//console.log(event.key);
 
 	if(currentWord===''){
@@ -74,60 +75,60 @@ document.onkeyup = function(event) {
 		var checkGuess = currentWord.indexOf(currentGuess.toLowerCase());
 		//locates currentGuess within currentWord
 
-			if(checkGuess > -1){
+		if(checkGuess > -1){
 			//successful check
 
-				for( i = 0; i < currentWord.length; i++){
-					if(currentWord[i] === currentGuess.toLowerCase()){
-						currentSolved[i]=currentGuess;
-					}
+			for( i = 0; i < currentWord.length; i++){
+				if(currentWord[i] === currentGuess.toLowerCase()){
+					currentSolved[i]=currentGuess;
 				}
+			}
 				//adds current guess to currentSolved array
-					
-				//convert currentSolved array to checkSolvedString string
-					var checkSolvedString = '';
-					for( i = 0; i < currentWord.length; i++ ){
-						checkSolvedString = checkSolvedString + currentSolved[i];
-					}
 
-					if(checkSolvedString === currentWord){
+				//convert currentSolved array to checkSolvedString string
+				var checkSolvedString = '';
+				for( i = 0; i < currentWord.length; i++ ){
+					checkSolvedString = checkSolvedString + currentSolved[i];
+				}
+
+				if(checkSolvedString === currentWord){
 					//check for win
-						wins ++;
-						printScreen();
+					wins ++;
+					printScreen();
+
+						//***adds "You Win" banner
 						document.getElementById('remainingID').textContent = 'You Win! Press Any Key to Restart!';
 						currentWord = '';
-
-		//***adds "You Win" banner
 					}
 
 					else{
 					//otherwise adds current guess to list
 
-						guesses = guesses +' ' +currentGuess;
-						printScreen();
-					}
+					guesses = guesses +' ' +currentGuess;
+					printScreen();
+				}
 
-				} else if (remaining === 1) {
-				//checks for loss
+			} else if (remaining === 1) {
+			//checks for loss
 
-					remaining --;
-					losses ++;
+			remaining --;
+			losses ++;
 
-		//***add "Game Over" banner
+					//***add "Game Over" banner
 					printScreen();
 					document.getElementById('remainingID').textContent = 'You Lose! Press Any Key to Restart!';
 					currentWord = '';
 
 				}
 
-			else
-			{	
-			//otherwise adds current guess to list and decreases remaining
+				else{	
+				//otherwise adds current guess to list and decreases remaining
 
 				guesses = guesses +' ' +currentGuess;
 				remaining--;
 				printScreen();
 			}
+
 		}
 	}
 

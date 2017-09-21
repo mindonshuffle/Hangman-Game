@@ -4,65 +4,72 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Hangman</title>
+	<title>Java(script) Hangman</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Coming+Soon|Schoolbell|Arvo:700|Caveat:700|Permanent+Marker" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-	<nav class = "navbar navbar-default" role = "navigation">
-   
-   		<div class = "navbar-header">
-      		<a class = "navbar-brand" href = "#">Java Hangman</a>
-   		</div>
-   
-   </div>
-   
-</nav>
-
 	<div class="container">
+
 		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1 id="title">Java(script) Hangman</h1>
+			</div>
 
-<!-- begin main column -->
+			<div class="row">
 
-			<div class="col-md-8">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<img class="center-block" id="hangmanSVG" src="assets/images/hangman9.svg" alt="Hangman">
-							</div>
-							<div class="panel-footer" id="currentWordArea">
-								<h1 class="text-center"><span id="currentWordID"></span></h1>
+				<!-- begin top content -->
+
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<img class="center-block" id="hangmanSVG" src="assets/images/hangman9.svg" alt="Hangman">
+								</div>
+								<div class="panel-footer" id="currentWordArea">
+									<h1 class="text-center"><span id="currentWordID"></span></h1>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="panel panel-default">
+					
+				<!-- <div class="panel panel-default">
 					<div class="panel-body">
 					<h1><span id="guessesID"></span></h1>
 					<h1><span id="remainingID">Press Any Key to Begin!</span></h1>
 				
 					</div>
-				</div>
+				</div> -->
 			</div>
 
-<!-- end main column -->
+			<!-- begin bottom content -->
 
-<!-- begin sidebar -->
-
-			<div class="col-md-4">
+			<div class="col-md-12">
 				<div class="row">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1>Wins:&nbsp&nbsp<span id="winsID"></span></h1>
-							<h1>Losses:&nbsp&nbsp<span id="lossesID"></span></h1>
+					
+					<div class="col-md-8">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h1><span id="guessesID"></span></h1>
+								<h1><span id="remainingID">Press Any Key to Begin!</span></h1>
+							</div>
 						</div>
 					</div>
+
+					<div class="col-md-4">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h1>Wins:&nbsp&nbsp<span id="winsID"></span></h1>
+								<h1>Losses:&nbsp&nbsp<span id="lossesID"></span></h1>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 

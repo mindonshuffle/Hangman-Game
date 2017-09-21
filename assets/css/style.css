@@ -6,27 +6,30 @@ body{
   	background-size: cover;
 	background-color: brown;
 
-	font-family: 'Coming Soon', cursive;
+	font-family: 'Permanent Marker', cursive;
 	font-weight: bold;
 }
 
 .panel-body{
-	background-color: white;
+	background-color: beige;
 }
 
 #currentWordArea{
 	background-color: #666666;
-	color: #FFF;
+	color: ivory;
+	letter-spacing: 5px;
 }
 
 .panel{
-	opacity: .8;
+	opacity: .9;
 }
 
-.nav{
-	opacity: .8;
+#title{
+	padding: 15px;
+	font-family: 'Arvo'; sans-serif;
+	color: ivory;
 }
 
 #hangmanSVG{
-	width: 45%;
+	width: 25%;
 }
