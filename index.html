@@ -7,6 +7,7 @@
 	<title>Hangman</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -34,8 +35,8 @@
 							<div class="panel-body">
 								<img class="center-block" id="hangmanSVG" src="assets/images/hangman9.svg" alt="Hangman">
 							</div>
-							<div class="panel-footer">
-								<h1 class="text-center">Remaining:&nbsp&nbsp<span id="remainingID"></span></h1>
+							<div class="panel-footer" id="currentWordArea">
+								<h1 class="text-center"><span id="currentWordID"></span></h1>
 							</div>
 						</div>
 					</div>
@@ -43,8 +44,8 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
-					<h1>Current Word:&nbsp&nbsp<span id="currentWordID"></span></h1>
-					<h1>Guesses:&nbsp&nbsp<span id="guessesID"></span></h1>
+					<h1><span id="guessesID"></span></h1>
+					<h1><span id="remainingID">Press Any Key to Begin!</span></h1>
 				
 					</div>
 				</div>

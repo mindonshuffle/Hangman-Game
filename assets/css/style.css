@@ -5,6 +5,18 @@ body{
   	-o-background-size: cover;
   	background-size: cover;
 	background-color: brown;
+
+	font-family: 'Coming Soon', cursive;
+	font-weight: bold;
+}
+
+.panel-body{
+	background-color: white;
+}
+
+#currentWordArea{
+	background-color: #666666;
+	color: #FFF;
 }
 
 .panel{

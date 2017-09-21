@@ -44,8 +44,8 @@ function printScreen(){
 	document.getElementById('hangmanSVG').src = 'assets/images/hangman' +remaining+ '.svg';
 
 	document.getElementById('currentWordID').innerHTML = currentSolvedString;
-	document.getElementById('guessesID').textContent = guesses;
-	document.getElementById('remainingID').innerHTML = remaining;
+	document.getElementById('guessesID').textContent = 'Guesses:  ' +guesses;
+	document.getElementById('remainingID').innerHTML = 'Remaining:  ' +remaining;
 	document.getElementById('winsID').innerHTML = wins;
 	document.getElementById('lossesID').innerHTML = losses;
 }
@@ -94,7 +94,7 @@ document.onkeyup = function(event) {
 					//check for win
 						wins ++;
 						printScreen();
-						document.getElementById('guessesID').textContent = 'You Win!';
+						document.getElementById('remainingID').textContent = 'You Win! Press Any Key to Restart!';
 						currentWord = '';
 
 		//***adds "You Win" banner
@@ -115,7 +115,7 @@ document.onkeyup = function(event) {
 
 		//***add "Game Over" banner
 					printScreen();
-					document.getElementById('guessesID').textContent = 'You Lost!';
+					document.getElementById('remainingID').textContent = 'You Lose! Press Any Key to Restart!';
 					currentWord = '';
 
 				}
