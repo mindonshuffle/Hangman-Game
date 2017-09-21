@@ -1,4 +1,9 @@
-var wordList = ['doubleword']
+//----Variable Defitions----
+
+var wordList = ['mocha', 'cafe', 'filter', 'thermos', 'espresso', 'latte', 
+				'frappe', 'barista', 'roaster', 'beans', 'coffee', 'caffeine', 
+				'grinds', 'black', 'press', 'drip', 'cuppa'];
+				
 var alphabet = 'abcdefghijklmnopqrstuvwxyz';
 var wins = 0;
 var losses = 0;
@@ -6,6 +11,45 @@ var guesses = '';
 var remaining = 6;
 var currentWord = '';
 var currentSolved = [];
+
+//----function definitions----
+
+function initialize(){
+	// randomly assigns a word from wordList to currentWord and resets other counters
+
+	currentWord = wordList[Math.floor(Math.random() * wordList.length)];
+	guesses = '';
+	remaining = 9;
+
+	for( i=0; i < currentWord.length; i++){
+		currentSolved[i] = '_';
+	}
+
+	console.log(currentSolved);
+	console.log(currentWord);
+	
+	printScreen();
+}
+
+function printScreen(){
+
+	//converts currentSolved array to String for Display
+	var currentSolvedString = '';
+	for( i = 0; i < currentWord.length; i++ ){
+		currentSolvedString = currentSolvedString + currentSolved[i] + ' ';
+	}
+
+	document.getElementById('hangmanSVG').src = 'assets/images/hangman' +remaining+ '.svg';
+
+	document.getElementById('currentWordID').innerHTML = currentSolvedString;
+	document.getElementById('guessesID').innerHTML = guesses;
+	document.getElementById('remainingID').innerHTML = remaining;
+	document.getElementById('winsID').innerHTML = wins;
+	document.getElementById('lossesID').innerHTML = losses;
+}
+
+
+// ---- Main Game Logic ----
 
 initialize();
 
@@ -31,7 +75,6 @@ document.onkeyup = function(event) {
 						currentSolved[i]=currentGuess;
 					}
 				}
-				//currentSolved[currentWord.indexOf(currentGuess)] = currentGuess;
 				//adds current guess to currentSolved array
 					
 				//convert currentSolved array to checkSolvedString string
@@ -40,65 +83,37 @@ document.onkeyup = function(event) {
 						checkSolvedString = checkSolvedString + currentSolved[i];
 					}
 
-					
-					//check for win
 					if(checkSolvedString === currentWord){
+					//check for win
 						wins ++;
+		//***add "You Win" banner
 						initialize();
 					}
 
 					else{
+					//otherwise adds current guess to list
+
 						guesses = guesses +' ' +currentGuess;
 						printScreen();
 					}
 
 				} else if (remaining === 1) {
+				//checks for loss
+
+					remaining --;
 					losses ++;
+		//***add "Game Over" banner
 					initialize();
 				}
 
-				else
-				{	
-					guesses = guesses +' ' +currentGuess;
-					remaining--;
-					printScreen();
-				}
+			else
+			{	
+			//otherwise adds current guess to list and decreases remaining
+
+				guesses = guesses +' ' +currentGuess;
+				remaining--;
+				printScreen();
 			}
 		}
+	}
 
-
-		//function definitions
-
-		function initialize(){
-			// randomly assigns a word from wordList to currentWord and resets other counters
-
-			currentWord = wordList[Math.floor(Math.random() * wordList.length)];
-			guesses = '';
-			remaining = 9;
-
-			for( i=0; i < currentWord.length; i++){
-				currentSolved[i] = '_';
-			}
-
-			console.log(currentSolved);
-			console.log(currentWord);
-			
-			printScreen();
-		}
-
-		function printScreen(){
-
-			//converts currentSolved array to String for Display
-			var currentSolvedString = '';
-			for( i = 0; i < currentWord.length; i++ ){
-				currentSolvedString = currentSolvedString + currentSolved[i] + ' ';
-			}
-
-			document.getElementById('hangmanSVG').src = 'assets/images/hangman' +remaining+ '.svg';
-
-			document.getElementById('currentWordID').innerHTML = currentSolvedString;
-			document.getElementById('guessesID').innerHTML = guesses;
-			document.getElementById('remainingID').innerHTML = remaining;
-			document.getElementById('winsID').innerHTML = wins;
-			document.getElementById('lossesID').innerHTML = losses;
-		}
