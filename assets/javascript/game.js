@@ -74,7 +74,7 @@ document.onkeyup = function(event) {
 
 			currentWord = wordList[Math.floor(Math.random() * wordList.length)];
 			guesses = '';
-			remaining = 6;
+			remaining = 9;
 
 			for( i=0; i < currentWord.length; i++){
 				currentSolved[i] = '_';
@@ -93,6 +93,8 @@ document.onkeyup = function(event) {
 			for( i = 0; i < currentWord.length; i++ ){
 				currentSolvedString = currentSolvedString + currentSolved[i] + ' ';
 			}
+
+			document.getElementById('hangmanSVG').src = 'assets/images/hangman' +remaining+ '.svg';
 
 			document.getElementById('currentWordID').innerHTML = currentSolvedString;
 			document.getElementById('guessesID').innerHTML = guesses;
