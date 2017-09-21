@@ -7,7 +7,14 @@ body{
 	background-color: brown;
 }
 
+.panel{
+	opacity: .8;
+}
+
+.nav{
+	opacity: .8;
+}
 
 #hangmanSVG{
-	width: 50%;
+	width: 45%;
 }

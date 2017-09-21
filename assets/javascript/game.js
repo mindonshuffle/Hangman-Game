@@ -25,7 +25,7 @@ function initialize(){
 		currentSolved[i] = '_';
 	}
 
-	console.log(currentSolved);
+	//console.log(currentSolved);
 	console.log(currentWord);
 	
 	printScreen();
@@ -39,10 +39,12 @@ function printScreen(){
 		currentSolvedString = currentSolvedString + currentSolved[i] + ' ';
 	}
 
+	console.log(currentSolved);
+
 	document.getElementById('hangmanSVG').src = 'assets/images/hangman' +remaining+ '.svg';
 
 	document.getElementById('currentWordID').innerHTML = currentSolvedString;
-	document.getElementById('guessesID').innerHTML = guesses;
+	document.getElementById('guessesID').textContent = guesses;
 	document.getElementById('remainingID').innerHTML = remaining;
 	document.getElementById('winsID').innerHTML = wins;
 	document.getElementById('lossesID').innerHTML = losses;
@@ -56,7 +58,12 @@ initialize();
 	//When key pressed, begin checking the values
 
 document.onkeyup = function(event) {
-	console.log(event.key);
+	//console.log(event.key);
+
+	if(currentWord===''){
+		initialize();
+		return;
+	}
 
 	var currentGuess = event.key;
 		//sets currentGuess to input letter
@@ -86,8 +93,11 @@ document.onkeyup = function(event) {
 					if(checkSolvedString === currentWord){
 					//check for win
 						wins ++;
-		//***add "You Win" banner
-						initialize();
+						printScreen();
+						document.getElementById('guessesID').textContent = 'You Win!';
+						currentWord = '';
+
+		//***adds "You Win" banner
 					}
 
 					else{
@@ -102,8 +112,12 @@ document.onkeyup = function(event) {
 
 					remaining --;
 					losses ++;
+
 		//***add "Game Over" banner
-					initialize();
+					printScreen();
+					document.getElementById('guessesID').textContent = 'You Lost!';
+					currentWord = '';
+
 				}
 
 			else
